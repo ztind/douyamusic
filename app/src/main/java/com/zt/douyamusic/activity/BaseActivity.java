@@ -1,4 +1,4 @@
-package com.zt.douyamusic.activity;
+﻿package com.zt.douyamusic.activity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -12,7 +12,7 @@ import android.view.WindowManager;
  * Author: ZT on 2017/2/24.
  */
 public class BaseActivity extends FragmentActivity {
-
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
