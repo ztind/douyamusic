@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/lovemusic_topText"
+        android:fitsSystemWindows="true"
+        android:background="#992e8799"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#992e8799"
+        >
+        <ImageView
+            android:id="@+id/exit_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/go_back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/selector"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我收藏的音乐"
+            android:layout_centerInParent="true"
+            android:textSize="20dp"
+            android:textColor="#00FF00"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/love"
+        >
+        <ListView
+            android:id="@+id/love_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <TextView
+            android:id="@+id/tisi_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="你还没有收藏任何音乐哦~~赶快去收藏吧！"
+            android:gravity="center"
+            android:layout_marginTop="150dp"
+            android:textSize="15dp"
+            android:textColor="#00FF00"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

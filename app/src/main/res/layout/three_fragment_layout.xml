@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/sss"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="最近播放会记录你最近播放的10首歌曲"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="#5bdfe2"
+        />
+    <ListView
+        android:id="@+id/three_fragment_listview"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/sss"
+        />
+
+</RelativeLayout>
