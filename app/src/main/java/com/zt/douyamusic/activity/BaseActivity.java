@@ -1,4 +1,4 @@
-﻿package com.zt.douyamusic.activity;
+package com.zt.douyamusic.activity;
 
 import android.graphics.Color;
 import android.os.Build;

@@ -1,8 +1,16 @@
 package com.zt.douyamusic.activity;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.zt.douyamusic.R;
 
@@ -22,19 +30,43 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         AppConnect.getInstance(this);
-        Timer timer = new Timer();
-        TimerTask task=new TimerTask() {
-            @Override
-            public void run() {
-               gotoMianActivity();
-            }
-        };
-        timer.schedule(task,2000);//定时2s后跳转到主界面
+        requsetPermis();
     }
 
     private void gotoMianActivity() {
         Intent intent=new Intent(this,MainActivity.class);//通过显示意图来跳转
         this.startActivity(intent);
         this.finish();
+    }
+    @TargetApi(Build.VERSION_CODES.M)
+    private void requsetPermis() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            this.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},33);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        doNext(requestCode,grantResults);
+    }
+    private void doNext(int requestCode, int[] grantResults) {
+        if (requestCode == 33) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission Granted
+                Timer timer = new Timer();
+                TimerTask task=new TimerTask() {
+                    @Override
+                    public void run() {
+                        gotoMianActivity();
+                    }
+                };
+                timer.schedule(task,2000);//定时2s后跳转到主界面
+            } else {
+                // Permission Denied
+                Toast.makeText(this, "请授予该权限，否则无法正常使用app", Toast.LENGTH_LONG).show();
+                requsetPermis();
+            }
+        }
     }
 }
