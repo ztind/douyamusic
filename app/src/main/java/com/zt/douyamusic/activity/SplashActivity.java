@@ -42,6 +42,8 @@ public class SplashActivity extends Activity {
     private void requsetPermis() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             this.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},33);
+        }else {
+            enterAty();
         }
     }
 
@@ -54,19 +56,22 @@ public class SplashActivity extends Activity {
         if (requestCode == 33) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission Granted
-                Timer timer = new Timer();
-                TimerTask task=new TimerTask() {
-                    @Override
-                    public void run() {
-                        gotoMianActivity();
-                    }
-                };
-                timer.schedule(task,2000);//定时2s后跳转到主界面
+                enterAty();
             } else {
                 // Permission Denied
                 Toast.makeText(this, "请授予该权限，否则无法正常使用app", Toast.LENGTH_LONG).show();
                 requsetPermis();
             }
         }
+    }
+    private void enterAty(){
+        Timer timer = new Timer();
+        TimerTask task=new TimerTask() {
+            @Override
+            public void run() {
+                gotoMianActivity();
+            }
+        };
+        timer.schedule(task,2000);//定时2s后跳转到主界面
     }
 }
